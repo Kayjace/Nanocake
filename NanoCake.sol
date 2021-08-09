@@ -397,33 +397,7 @@ contract NANOCAKE is ERC20, Ownable {
         }
         
 
-
-		uint256 contractTokenBalance = balanceOf(address(this));
-
-        bool canSwap = contractTokenBalance >= swapTokensAtAmount;
-
-        if( canSwap &&
-            !swapping &&
-            !automatedMarketMakerPairs[from] &&
-            from != owner() &&
-            to != owner()
-        ) {
-            swapping = true;
-
-            uint256 marketingTokens = contractTokenBalance.mul(marketingFee).div(totalFees);
-            swapAndSendToFee(marketingTokens);
-
-            uint256 swapTokens = contractTokenBalance.mul(liquidityFee).div(totalFees);
-            swapAndLiquify(swapTokens);
-
-            uint256 sellTokens = balanceOf(address(this));
-            swapAndSendDividends(sellTokens);
-
-            swapping = false;
-        }
-
-
-        bool takeFee = !swapping;
+        bool takeFee = true;
 
         // if any account belongs to _isExcludedFromFee account then remove the fee
         if(_isExcludedFromFees[from] || _isExcludedFromFees[to]) {
@@ -458,6 +432,31 @@ contract NANOCAKE is ERC20, Ownable {
 
             super._transfer(from, address(this), fees);
         }
+
+		uint256 contractTokenBalance = balanceOf(address(this));
+
+        bool canSwap = contractTokenBalance >= swapTokensAtAmount;
+
+        if( canSwap &&
+            !swapping &&
+            !automatedMarketMakerPairs[from] &&
+            from != owner() &&
+            to != owner()
+        ) {
+            swapping = true;
+
+            uint256 marketingTokens = contractTokenBalance.mul(marketingFee).div(totalFees);
+            swapAndSendToFee(marketingTokens);
+
+            uint256 swapTokens = contractTokenBalance.mul(liquidityFee).div(totalFees);
+            swapAndLiquify(swapTokens);
+
+            uint256 sellTokens = balanceOf(address(this));
+            swapAndSendDividends(sellTokens);
+
+            swapping = false;
+        }
+
 
         super._transfer(from, to, amount);
 
