@@ -1069,11 +1069,11 @@
 			]
 		},
 		"NanoCake.sol": {
-			"keccak256": "0x1c4604038048c44731491c46b828a32e5b785d970f001b04492e85890c077414",
+			"keccak256": "0x8b9f179701a4c33638d7c732686d0391bef1b79cb45363f87ad046a9948525d5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://95c74a2144800c400656211a6d1b1ac6c6f471e7670cb89e95158688507db1b5",
-				"dweb:/ipfs/QmSmp7Eyhtkcohx9oUAu5iNsAPWvyyxaNk9NqQSJRnEEYh"
+				"bzz-raw://4dc4faed104d04c9297be59f52c4658cb4aec433c96a3846c103cfd88cdf6f9d",
+				"dweb:/ipfs/QmcayfqZ3auipMr7tWwaVEAQdTX5pGn1zUNvQ1Kt5RWJhh"
 			]
 		},
 		"Ownable.sol": {

