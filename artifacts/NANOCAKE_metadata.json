@@ -301,6 +301,13 @@
 			},
 			{
 				"inputs": [],
+				"name": "ADDLiqu",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "CAKE",
 				"outputs": [
 					{
@@ -341,6 +348,19 @@
 			{
 				"inputs": [],
 				"name": "_CAKERewardsFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "_addliquidity",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -1490,11 +1510,11 @@
 			]
 		},
 		"NanoCake.sol": {
-			"keccak256": "0xce17dd68e7a163d6538acdbfdb577e73255c276315b542a64016f8fafecb298e",
+			"keccak256": "0x818fe8282cb6f32070851b76f0a0a38a3cebb10715cb321281dc81560fea8be0",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8dde69c07bea5e5b145a57a99300627cd6c3498f9c6cd4c09ccd8373a90851d5",
-				"dweb:/ipfs/QmbrunRPvKeX7w5Zyv5en1Skgqw9yg22RZjCZD18MRG7Sf"
+				"bzz-raw://9138d2c183d4be4f9c27d1e3e6b8679f046d5b66e96c6c8835db196d10ff6d14",
+				"dweb:/ipfs/QmXzxeAYAoaD4jD4YotjczXLXqZaiK5Mrk7X6HLN8NzVV6"
 			]
 		},
 		"Ownable.sol": {

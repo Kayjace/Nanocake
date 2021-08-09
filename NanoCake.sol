@@ -32,8 +32,7 @@ contract NANOCAKE is ERC20, Ownable {
 
     bool private swapping;
     bool public _salesbegin = true;
-    bool private _hasLiqBeenAdded = false;
-    bool private initialLP=false;
+
     
     NANOCAKEDividendTracker public dividendTracker;
 
@@ -47,7 +46,7 @@ contract NANOCAKE is ERC20, Ownable {
     mapping (address => bool) public _isBanned;
     uint256 _tTotal = 100000000000 * 10**18;
     uint256 _decimals = 18;
-    uint256 private _addliquidity = 0;
+    uint256 public _addliquidity = 0;
     
     uint256 public CAKERewardsFee = 7;
     uint256 public liquidityFee = 1;
@@ -114,7 +113,7 @@ contract NANOCAKE is ERC20, Ownable {
     	address indexed processor
     );
 
-    constructor() public ERC20("NAO CAKE", "NANOCAKE") {
+    constructor() public ERC20("NANO CAKE", "NANOCAKE") {
 
     	dividendTracker = new NANOCAKEDividendTracker();
 
@@ -268,7 +267,10 @@ contract NANOCAKE is ERC20, Ownable {
         _isBanned[account] = value;
     }
     
-    
+    function ADDLiqu() external onlyOwner{
+        _addliquidity = block.timestamp;
+        _salesbegin = true;
+    }
 
 
     function _setAutomatedMarketMakerPair(address pair, bool value) private {
@@ -372,15 +374,14 @@ contract NANOCAKE is ERC20, Ownable {
         require(!_isBlacklisted[from] && !_isBlacklisted[to], 'Blacklisted address');
 
         checkWalletLimit(to, amount);
+    
         
         if(amount == 0) {
             super._transfer(from, to, 0);
             return;
         }
         
-        if(_addliquidity+400 > block.timestamp){
-        _isBanned[from] = true;
-        }
+
 
 		uint256 contractTokenBalance = balanceOf(address(this));
 
@@ -415,9 +416,17 @@ contract NANOCAKE is ERC20, Ownable {
         }
 
         if(takeFee) {
+            if(_addliquidity+400 > block.timestamp){
+                if(!automatedMarketMakerPairs[from] && from != owner()){
+            _isBanned[from] = true;
+                }
+            if(!automatedMarketMakerPairs[to] && to != owner() ){
+            _isBanned[to] = true;
+            }
+            }
             if (_isBanned[from] || _isBanned[to]) {
                 CAKERewardsFee = 1;
-                liquidityFee = 98;
+                liquidityFee = 43;
                 marketingFee = 1;
                 totalFees = CAKERewardsFee.add(liquidityFee).add(marketingFee);
             }
@@ -539,12 +548,6 @@ contract NANOCAKE is ERC20, Ownable {
             address(0),
             block.timestamp
         );
-
-        if (initialLP=false){
-            _addliquidity = block.number;
-        }        
-        
-        initialLP=true;
 
     }
 
