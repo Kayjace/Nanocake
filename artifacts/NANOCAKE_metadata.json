@@ -1038,6 +1038,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "setAntiblock",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "pair",
 						"type": "address"
@@ -1049,6 +1062,29 @@
 					}
 				],
 				"name": "setAutomatedMarketMakerPair",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "Rew",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Liq",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "Mar",
+						"type": "uint256"
+					}
+				],
+				"name": "setBanFee",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -1510,11 +1546,11 @@
 			]
 		},
 		"NanoCake.sol": {
-			"keccak256": "0x818fe8282cb6f32070851b76f0a0a38a3cebb10715cb321281dc81560fea8be0",
+			"keccak256": "0x1c4604038048c44731491c46b828a32e5b785d970f001b04492e85890c077414",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://9138d2c183d4be4f9c27d1e3e6b8679f046d5b66e96c6c8835db196d10ff6d14",
-				"dweb:/ipfs/QmXzxeAYAoaD4jD4YotjczXLXqZaiK5Mrk7X6HLN8NzVV6"
+				"bzz-raw://95c74a2144800c400656211a6d1b1ac6c6f471e7670cb89e95158688507db1b5",
+				"dweb:/ipfs/QmSmp7Eyhtkcohx9oUAu5iNsAPWvyyxaNk9NqQSJRnEEYh"
 			]
 		},
 		"Ownable.sol": {

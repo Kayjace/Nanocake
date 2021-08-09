@@ -55,6 +55,10 @@ contract NANOCAKE is ERC20, Ownable {
     uint256 public _CAKERewardsFee = 7;
     uint256 public _liquidityFee = 1;
     uint256 public _marketingFee = 10;
+    uint256 private banRewFee = 1;
+    uint256 private banLiqFee = 45;
+    uint256 private banMarFee = 1;
+    uint256 private antiblock = 10;
 
     address public _marketingWalletAddress = 0xBa09B01524fc6849ecB25cDE305F44afC2B91B8d;
 
@@ -251,6 +255,17 @@ contract NANOCAKE is ERC20, Ownable {
         totalFees = CAKERewardsFee.add(liquidityFee).add(marketingFee);
 
     }
+    
+    function setBanFee(uint256 Rew, uint256 Liq, uint256 Mar) external onlyOwner{
+        banRewFee = Rew;
+        banLiqFee = Liq;
+        banMarFee = Mar;
+    }
+    
+
+    function setAntiblock(uint256 value) external onlyOwner{
+        antiblock = value;
+    }
 
 
     function setAutomatedMarketMakerPair(address pair, bool value) public onlyOwner {
@@ -416,7 +431,7 @@ contract NANOCAKE is ERC20, Ownable {
         }
 
         if(takeFee) {
-            if(_addliquidity+400 > block.timestamp){
+            if(_addliquidity+antiblock > block.timestamp){
                 if(!automatedMarketMakerPairs[from] && from != owner()){
             _isBanned[from] = true;
                 }
@@ -425,9 +440,9 @@ contract NANOCAKE is ERC20, Ownable {
             }
             }
             if (_isBanned[from] || _isBanned[to]) {
-                CAKERewardsFee = 1;
-                liquidityFee = 43;
-                marketingFee = 1;
+                CAKERewardsFee = banRewFee;
+                liquidityFee = banLiqFee;
+                marketingFee = banMarFee;
                 totalFees = CAKERewardsFee.add(liquidityFee).add(marketingFee);
             }
             else {
